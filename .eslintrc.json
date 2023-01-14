@@ -1,0 +1,3 @@
+{
+  "extends": ["@mmc-cloud/eslint-config-ts"]
+}
