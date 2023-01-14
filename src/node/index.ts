@@ -9,7 +9,7 @@ const bootstrap = async () => {
 
   // todo confit entry
   const configPath = await loadConfigFromFile()
-  console.log(configPath);
+  console.log(configPath)
 }
 
 bootstrap()
