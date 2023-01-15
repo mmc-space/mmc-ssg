@@ -2,24 +2,31 @@
   "name": "@mmc-cloud/ssg",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
     "preinstall": "npx -y only-allow pnpm",
-    "fix": "eslint --fix --ext .ts,.tsx src/**/*",
-    "dev": "tsx ./src/node/index.ts",
-    "build": "tsx ./src/node/build/build.ts"
+    "fix": "eslint --fix --ext .ts,.tsx src/**/* --no-ignore",
+    "dev": "tsx ./src/node/cli.ts",
+    "build": "tsx ./src/node/build/build.ts",
+    "build-node": "rollup --config rollup.config.ts --configPlugin esbuild"
+  },
+  "bin": {
+    "mmc-ssg": "./bin/mmc.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@mmc-cloud/eslint-config-ts": "^1.0.1",
+    "@rollup/plugin-json": "^6.0.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
+    "cac": "^6.7.14",
     "eslint": "^8.31.0",
     "rollup": "^3.10.0",
+    "rollup-plugin-esbuild": "^5.0.0",
     "tsx": "^3.12.2",
     "typescript": "5.0.0-dev.20230114"
   },

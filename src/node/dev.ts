@@ -1,9 +1,9 @@
 import { createServer } from 'vite'
 import pluginReact from '@vitejs/plugin-react'
-import { pluginHtmlTemplate } from './plugin'
+import { pluginHtmlTemplate, pluginRoutes } from './plugin'
 
 export const createDevServer = (root: string) =>
   createServer({
     root,
-    plugins: [pluginHtmlTemplate(), pluginReact()],
+    plugins: [pluginHtmlTemplate(), pluginRoutes(), pluginReact()],
   })

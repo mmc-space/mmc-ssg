@@ -39,3 +39,24 @@ export const pluginHtmlTemplate = (): Plugin => ({
     }
   },
 })
+
+export const pluginRoutes = (): Plugin => {
+  const virtualModuleId = 'virtual:routes'
+  const resolvedVirtualModuleId = `\0${virtualModuleId}`
+
+  return {
+    name: 'vite-plugin-routes',
+    resolveId(id) {
+      if (id === virtualModuleId)
+        return resolvedVirtualModuleId
+    },
+
+    load(id) {
+      if (id === resolvedVirtualModuleId) {
+        return {
+          code: 'export const routes = []',
+        }
+      }
+    },
+  }
+}

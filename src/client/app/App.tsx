@@ -1,7 +1,9 @@
-import Layout from "../theme/Layout";
+import { routes } from 'virtual:routes'
+import Layout from '../theme/Layout'
 
 const App = () => {
-  return <Layout />;
-};
+  console.log('routes', routes)
+  return <Layout />
+}
 
-export default App;
+export default App
