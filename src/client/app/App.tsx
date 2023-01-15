@@ -1,11 +1,7 @@
-import Layout from '../theme/Layout'
+import Layout from "../theme/Layout";
 
 const App = () => {
-  return (
-    <div className="app">
-      <Layout />
-    </div>
-  )
-}
+  return <Layout />;
+};
 
-export default App
+export default App;

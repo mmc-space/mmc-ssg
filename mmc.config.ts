@@ -1,1 +1,5 @@
-const a = 1
+import { defineConfig } from "./src/node/config";
+
+export default defineConfig({
+  
+})

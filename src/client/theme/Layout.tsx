@@ -5,10 +5,10 @@ const Layout = () => {
 
   return (
     <div>
-      <h1>{count}</h1>
+      <h1>count: {count}</h1>
       <div>
         <button onClick={() => setCount(count => count + 1)}>
-          Add Count
+          add Count
         </button>
       </div>
     </div>

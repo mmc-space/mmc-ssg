@@ -2,7 +2,8 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App'
 
-export const renderInBrowser = () => {
+// entry for client
+export const render = () => {
   const root = document.getElementById('root')
 
   if (!root)
@@ -15,4 +16,4 @@ export const renderInBrowser = () => {
   )
 }
 
-renderInBrowser()
+render()

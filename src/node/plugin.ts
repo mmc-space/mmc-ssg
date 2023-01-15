@@ -1,6 +1,5 @@
-import { readFile } from 'fs/promises'
 import type { Plugin } from 'vite'
-import { DEFAULT_HTML_PATH } from './constants'
+import { CLIENT_ENTRY_PATH } from './constants'
 
 export const pluginHtmlTemplate = (): Plugin => ({
   name: 'template-html-plugin',
@@ -8,16 +7,29 @@ export const pluginHtmlTemplate = (): Plugin => ({
   configureServer(server) {
     return () => {
       server.middlewares.use(async (req, res, next) => {
-        let template = await readFile(DEFAULT_HTML_PATH, 'utf-8')
+        let template = `<!DOCTYPE html>
+        <html>
+          <head>
+            <title></title>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1">
+            <meta name="description" content="">
+          </head>
+          <body>
+            <div id="root"></div>
+            <script type="module" src="/@fs/${CLIENT_ENTRY_PATH}"></script>
+          </body>
+        </html>`
         try {
+          res.statusCode = 200
+          res.setHeader('Content-Type', 'text/html')
+
+          // hmr
           template = await server.transformIndexHtml(
-            req.url!,
+            req.url ?? '',
             template,
             req.originalUrl,
           )
-
-          res.statusCode = 200
-          res.setHeader('Content-Type', 'text/html')
           res.end(template)
         }
         catch (error) {
