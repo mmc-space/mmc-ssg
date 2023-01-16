@@ -1,5 +1,5 @@
 import { join } from 'node:path'
-import * as fs from 'fs-extra'
+import fs from 'fs-extra'
 import type { OutputChunk, RollupOutput } from 'rollup'
 
 export const renderPage = async (

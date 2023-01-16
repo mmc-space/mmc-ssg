@@ -1,5 +1,17 @@
+import type { OutputAsset, OutputChunk } from 'rollup'
 import type { Plugin } from 'vite'
+import type { SiteConfig } from './config'
 import { CLIENT_ENTRY_PATH } from './constants'
+
+export const isPageChunk = (
+  chunk: OutputAsset | OutputChunk,
+): chunk is OutputChunk & { facadeModuleId: string } =>
+  !!(
+    chunk.type === 'chunk'
+    && chunk.isEntry
+    && chunk.facadeModuleId
+    && chunk.facadeModuleId.endsWith('.md')
+  )
 
 export const pluginHtmlTemplate = (): Plugin => ({
   name: 'template-html-plugin',
@@ -7,6 +19,9 @@ export const pluginHtmlTemplate = (): Plugin => ({
   configureServer(server) {
     return () => {
       server.middlewares.use(async (req, res, next) => {
+        const url = req.url || '/'
+        if (!url.endsWith('.html')) return next()
+
         let template = `<!DOCTYPE html>
         <html>
           <head>
@@ -26,7 +41,7 @@ export const pluginHtmlTemplate = (): Plugin => ({
 
           // hmr
           template = await server.transformIndexHtml(
-            req.url ?? '',
+            url,
             template,
             req.originalUrl,
           )
@@ -40,7 +55,7 @@ export const pluginHtmlTemplate = (): Plugin => ({
   },
 })
 
-export const pluginRoutes = (): Plugin => {
+export const pluginRoutes = (_config?: SiteConfig): Plugin => {
   const virtualModuleId = 'virtual:routes'
   const resolvedVirtualModuleId = `\0${virtualModuleId}`
 
@@ -53,6 +68,7 @@ export const pluginRoutes = (): Plugin => {
 
     load(id) {
       if (id === resolvedVirtualModuleId) {
+        // const routes = getFiles()
         return {
           code: 'export const routes = []',
         }

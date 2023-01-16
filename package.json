@@ -6,8 +6,7 @@
   "scripts": {
     "preinstall": "npx -y only-allow pnpm",
     "fix": "eslint --fix --ext .ts,.tsx src/**/* --no-ignore",
-    "dev": "tsx ./src/node/cli.ts",
-    "build": "tsx ./src/node/build/build.ts",
+    "dev": "mmc-ssg --config mmc.config.ts docs",
     "build-node": "rollup --config rollup.config.ts --configPlugin esbuild"
   },
   "bin": {
@@ -27,7 +26,6 @@
     "eslint": "^8.31.0",
     "rollup": "^3.10.0",
     "rollup-plugin-esbuild": "^5.0.0",
-    "tsx": "^3.12.2",
     "typescript": "5.0.0-dev.20230114"
   },
   "dependencies": {

@@ -1,5 +1,5 @@
-import { defineConfig } from "./src/node/config";
+import { defineConfig } from './src/node/config'
 
 export default defineConfig({
-  
+  title: '123',
 })

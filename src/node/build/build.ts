@@ -5,7 +5,7 @@ import { bundle } from './bundle'
 import { renderPage } from './render'
 
 export const build = async (root: string = process.cwd()) => {
-  const siteConfig = await resolveConfig(root, 'build')
+  const siteConfig = await resolveConfig(root, 'build', 'production')
   const { clientResult } = await bundle(root)
 
   const entryPath = join(root, 'temp', 'ssr.mjs')
