@@ -2,6 +2,7 @@ import { resolve } from 'node:path'
 import fs from 'fs-extra'
 import { loadConfigFromFile } from 'vite'
 import type { UserConfig } from 'types/config'
+
 export interface SiteConfig {
   pages: string[]
   root: string

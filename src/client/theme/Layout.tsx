@@ -1,7 +1,10 @@
 import { useState } from 'react'
+import { useRoutes } from 'react-router-dom'
+import { routes } from 'virtual:routes'
 
 const Layout = () => {
   const [count, setCount] = useState(0)
+  const routesElement = useRoutes(routes)
 
   return (
     <div>
@@ -11,6 +14,9 @@ const Layout = () => {
           add Count
         </button>
       </div>
+      <main>
+        {routesElement}
+      </main>
     </div>
   )
 }
