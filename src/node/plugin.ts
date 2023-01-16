@@ -1,5 +1,6 @@
 import type { OutputAsset, OutputChunk } from 'rollup'
 import type { Plugin } from 'vite'
+import { getFiles } from '../util/route'
 import type { SiteConfig } from './config'
 import { CLIENT_ENTRY_PATH } from './constants'
 
@@ -55,7 +56,7 @@ export const pluginHtmlTemplate = (): Plugin => ({
   },
 })
 
-export const pluginRoutes = (_config?: SiteConfig): Plugin => {
+export const pluginRoutes = (config?: SiteConfig): Plugin => {
   const virtualModuleId = 'virtual:routes'
   const resolvedVirtualModuleId = `\0${virtualModuleId}`
 
@@ -68,9 +69,9 @@ export const pluginRoutes = (_config?: SiteConfig): Plugin => {
 
     load(id) {
       if (id === resolvedVirtualModuleId) {
-        // const routes = getFiles()
+        const routes = getFiles(config)
         return {
-          code: 'export const routes = []',
+          code: `export const routes = ${JSON.stringify(routes)}`,
         }
       }
     },

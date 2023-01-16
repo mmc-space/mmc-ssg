@@ -7,8 +7,7 @@
     "preinstall": "npx -y only-allow pnpm",
     "fix": "eslint --fix --ext .ts,.tsx src/**/* --no-ignore",
     "dev": "mmc-ssg --config mmc.config.ts docs",
-    "build-node": "rollup --config rollup.config.ts --configPlugin esbuild",
-    "route": "tsx ./src/util/route.ts"
+    "build": "rollup --config rollup.config.ts --configPlugin esbuild"
   },
   "bin": {
     "mmc-ssg": "./bin/mmc.js"
