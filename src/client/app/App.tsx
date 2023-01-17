@@ -1,12 +1,12 @@
 import { useLocation } from 'react-router-dom'
 import { routes } from 'virtual:routes'
-import Layout from '../theme/Layout'
+import Theme from '../theme'
 
 const App = () => {
   const { pathname } = useLocation()
   console.log('routes', routes, pathname)
 
-  return <Layout />
+  return <Theme.Layout />
 }
 
 export default App
