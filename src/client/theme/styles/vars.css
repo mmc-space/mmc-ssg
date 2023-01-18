@@ -1,0 +1,11 @@
+/* header */
+:root {
+  --mmc-header-height: var(--mmc-header-height-mobile);
+  --mmc-header-height-mobile: 56px;
+  --mmc-header-height-desktop: 60px;
+}
+@media (min-width: 960px) {
+  :root {
+    --mmc-header-height: var(--mmc-header-height-desktop);
+  }
+}
