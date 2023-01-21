@@ -1,5 +1,8 @@
 import type { OutputAsset, OutputChunk } from 'rollup'
 import type { Plugin } from 'vite'
+
+import fs from 'fs-extra'
+
 import { getFiles } from '../util/route'
 import type { SiteConfig } from './config'
 import { CLIENT_ENTRY_PATH } from './constants'
@@ -74,6 +77,39 @@ export const pluginRoutes = (config?: SiteConfig): Plugin => {
           code: `export const routes = ${JSON.stringify(routes)}`,
         }
       }
+    },
+  }
+}
+
+export const pluginSvgr = (options: SvgrOptions = {}): Plugin => {
+  const { defaultExport = 'component' } = options
+
+  return {
+    name: 'svgr-plugin',
+    async transform(code, id) {
+      if (!id.endsWith('.svg'))
+        return code
+
+      const svgrTransform = await (await import('@svgr/core')).transform
+      const esbuild = await import('esbuild')
+      const svg = await fs.promises.readFile(id, 'utf8')
+      const svgrResult = await svgrTransform(
+        svg,
+        {},
+        { componentName: 'ReactComponent' },
+      )
+      let componentCode = svgrResult
+      if (defaultExport === 'url') {
+        componentCode = svgrResult.replace(
+          'export default ReactComponent',
+          'export { ReactComponent }',
+        )
+        componentCode += code
+      }
+      const result = await esbuild.transform(componentCode, {
+        loader: 'jsx',
+      })
+      return result.code
     },
   }
 }

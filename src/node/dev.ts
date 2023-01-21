@@ -1,7 +1,7 @@
 import { createServer } from 'vite'
 import pluginReact from '@vitejs/plugin-react'
 import UnoCSS from 'unocss/vite'
-import { pluginHtmlTemplate, pluginRoutes } from './plugin'
+import { pluginHtmlTemplate, pluginRoutes, pluginSvgr } from './plugin'
 import { resolveConfig } from './config'
 import type { CLIOptions } from './cli'
 
@@ -10,6 +10,6 @@ export const createDevServer = async (root: string, cliOptions: CLIOptions) => {
 
   return createServer({
     root,
-    plugins: [pluginHtmlTemplate(), UnoCSS(), pluginRoutes(config), pluginReact()],
+    plugins: [pluginHtmlTemplate(), pluginSvgr(), UnoCSS(), pluginRoutes(config), pluginReact()],
   })
 }

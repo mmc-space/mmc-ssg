@@ -1,3 +1,94 @@
+/* base */
+:root {
+  --mmc-theme-white: #ffffff;
+  --mmc-theme-white-soft: #f9f9f9;
+  --mmc-theme-white-mute: #f1f1f1;
+
+  --mmc-theme-black: #1a1a1a;
+  --mmc-theme-black-pure: #000000;
+  --mmc-theme-black-soft: #242424;
+  --mmc-theme-black-mute: #2f2f2f;
+
+  --mmc-theme-gray: #8e8e8e;
+  --mmc-theme-gray-light-1: #aeaeae;
+  --mmc-theme-gray-light-2: #c7c7c7;
+  --mmc-theme-gray-light-3: #d1d1d1;
+  --mmc-theme-gray-light-4: #e5e5e5;
+  --mmc-theme-gray-light-5: #f2f2f2;
+  --mmc-theme-gray-dark-1: #636363;
+  --mmc-theme-gray-dark-2: #484848;
+  --mmc-theme-gray-dark-3: #3a3a3a;
+  --mmc-theme-gray-dark-4: #282828;
+  --mmc-theme-gray-dark-5: #202020;
+
+  --mmc-theme-divider-light-1: rgba(60, 60, 60, 0.29);
+  --mmc-theme-divider-light-2: rgba(60, 60, 60, 0.12);
+  --mmc-theme-divider-dark-1: rgba(84, 84, 84, 0.65);
+  --mmc-theme-divider-dark-2: rgba(84, 84, 84, 0.48);
+
+  --mmc-theme-indigo: #213547;
+  --mmc-theme-indigo-soft: #476582;
+  --mmc-theme-indigo-light: #aac8e4;
+  --mmc-theme-indigo-lighter: #c9def1;
+  --mmc-theme-indigo-dark: #1d2f3f;
+  --mmc-theme-indigo-darker: #14212e;
+
+  --mmc-theme-text-light-1: var(--mmc-theme-indigo);
+  --mmc-theme-text-light-2: rgba(60, 60, 60, 0.7);
+  --mmc-theme-text-light-3: rgba(60, 60, 60, 0.33);
+  --mmc-theme-text-light-4: rgba(60, 60, 60, 0.18);
+
+  --mmc-theme-text-dark-1: rgba(255, 255, 255, 0.87);
+  --mmc-theme-text-dark-2: rgba(235, 235, 235, 0.6);
+  --mmc-theme-text-dark-3: rgba(235, 235, 235, 0.38);
+  --mmc-theme-text-dark-4: rgba(235, 235, 235, 0.18);
+
+  --mmc-theme-green: #21b8a3;
+  --mmc-theme-green-light: #41c6b0;
+  --mmc-theme-green-lighter: #41c6b0;
+  --mmc-theme-green-dark: #149684;
+  --mmc-theme-green-darker: #149684;
+  --mmc-theme-green-dimm: #062521;
+
+  --mmc-theme-green-dimm-1: rgba(66, 184, 131, 0.5);
+  --mmc-theme-green-dimm-2: rgba(66, 184, 131, 0.25);
+  --mmc-theme-green-dimm-3: rgba(66, 184, 131, 0.05);
+
+  --mmc-theme-blue: #646cff;
+  --mmc-theme-blue-light: #747bff;
+  --mmc-theme-blue-lighter: #9499ff;
+  --mmc-theme-blue-lightest: #bcc0ff;
+  --mmc-theme-blue-dark: #535bf2;
+  --mmc-theme-blue-darker: #454ce1;
+  --mmc-theme-blue-dimm: rgba(100, 108, 255, 0.08);
+
+  --mmc-theme-yellow: #ffc517;
+  --mmc-theme-yellow-light: #fcd253;
+  --mmc-theme-yellow-lighter: #fcfc7c;
+  --mmc-theme-yellow-darker: #ad850e;
+  --mmc-theme-yellow-dimm-1: rgba(255, 197, 23, 0.5);
+  --mmc-theme-yellow-dimm-2: rgba(255, 197, 23, 0.25);
+  --mmc-theme-yellow-dimm-3: rgba(255, 197, 23, 0.05);
+
+  --mmc-theme-red: #ed3c50;
+  --mmc-theme-red-light: #f54e82;
+  --mmc-theme-red-lighter: #fd1d7c;
+  --mmc-theme-red-darker: #ab2131;
+  --mmc-theme-red-dimm-1: rgba(237, 60, 80, 0.5);
+  --mmc-theme-red-dimm-2: rgba(237, 60, 80, 0.25);
+  --mmc-theme-red-dimm-3: rgba(237, 60, 80, 0.05);
+}
+
+/* font */
+:root {
+  --mmc-font-family-base: 'Inter var', 'Inter', ui-sans-serif, system-ui,
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Helvetica, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --mmc-font-family-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
 /* header */
 :root {
   --mmc-header-height: var(--mmc-header-height-mobile);
@@ -8,4 +99,67 @@
   :root {
     --mmc-header-height: var(--mmc-header-height-desktop);
   }
+}
+
+/* theme */
+:root {
+  --mmc-theme-bg: var(--mmc-theme-white);
+  --mmc-theme-bg-soft: var(--mmc-theme-white-soft);
+  --mmc-theme-bg-mute: var(--mmc-theme-white-mute);
+  --mmc-theme-bg-alt: var(--mmc-theme-white-soft);
+
+  --mmc-theme-divider: var(--mmc-theme-divider-light-1);
+  --mmc-theme-divider-light: var(--mmc-theme-divider-light-2);
+
+  --mmc-theme-text-1: var(--mmc-theme-text-light-1);
+  --mmc-theme-text-2: var(--mmc-theme-text-light-2);
+  --mmc-theme-text-3: var(--mmc-theme-text-light-3);
+  --mmc-theme-text-4: var(--mmc-theme-text-light-4);
+
+  --mmc-theme-text-themeode: var(--mmc-theme-indigo-soft);
+
+  --mmc-theme-brand: var(--mmc-theme-green);
+  --mmc-theme-brand-light: var(--mmc-theme-green-light);
+  --mmc-theme-brand-lighter: var(--mmc-theme-green-lighter);
+  --mmc-theme-brand-dark: var(--mmc-theme-green-dark);
+  --mmc-theme-brand-darker: var(--mmc-theme-green-darker);
+}
+
+.dark {
+  --mmc-theme-bg: var(--mmc-theme-black-soft);
+  --mmc-theme-bg-soft: var(--mmc-theme-black-mute);
+  --mmc-theme-bg-mute: var(--mmc-theme-gray-dark-3);
+  --mmc-theme-bg-alt: var(--mmc-theme-black);
+
+  --mmc-theme-divider: var(--mmc-theme-divider-dark-1);
+  --mmc-theme-divider-light: var(--mmc-theme-divider-dark-2);
+
+  --mmc-theme-divider-inverse: var(--mmc-theme-divider-light-1);
+  --mmc-theme-divider-inverse-light: var(--mmc-theme-divider-light-2);
+
+  --mmc-theme-text-1: var(--mmc-theme-text-dark-1);
+  --mmc-theme-text-2: var(--mmc-theme-text-dark-2);
+  --mmc-theme-text-3: var(--mmc-theme-text-dark-3);
+  --mmc-theme-text-4: var(--mmc-theme-text-dark-4);
+
+  --mmc-theme-text-inverse-1: var(--mmc-theme-text-light-1);
+  --mmc-theme-text-inverse-2: var(--mmc-theme-text-light-2);
+  --mmc-theme-text-inverse-3: var(--mmc-theme-text-light-3);
+  --mmc-theme-text-inverse-4: var(--mmc-theme-text-light-4);
+
+  --mmc-theme-text-themeode: var(--mmc-theme-indigo-lighter);
+}
+
+/* shadows */
+:root {
+  --mmc-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.06);
+  --mmc-shadow-2: 0 3px 12px rgba(0, 0, 0, 0.07),
+    0 1px 4px rgba(0, 0, 0, 0.07);
+  --mmc-shadow-3: 0 12px 32px rgba(0, 0, 0, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+  --mmc-shadow-4: 0 14px 44px rgba(0, 0, 0, 0.12),
+    0 3px 9px rgba(0, 0, 0, 0.12);
+  --mmc-shadow-5: 0 18px 56px rgba(0, 0, 0, 0.16),
+    0 4px 12px rgba(0, 0, 0, 0.16);
 }
