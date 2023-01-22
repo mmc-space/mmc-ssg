@@ -34,7 +34,7 @@ export const Search: FC = () => {
         styles['mmc-search'],
       )}
     >
-      <SearchSvg width="text-1" fill="currentColor" />
+      <SearchSvg />
       <input
         placeholder="Search"
         className="px-2 text-base"

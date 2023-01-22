@@ -6,7 +6,7 @@
 
   --mmc-theme-black: #1a1a1a;
   --mmc-theme-black-pure: #000000;
-  --mmc-theme-black-soft: #242424;
+  --mmc-theme-black-soft: #1e1e20;
   --mmc-theme-black-mute: #2f2f2f;
 
   --mmc-theme-gray: #8e8e8e;
@@ -162,4 +162,9 @@
     0 3px 9px rgba(0, 0, 0, 0.12);
   --mmc-shadow-5: 0 18px 56px rgba(0, 0, 0, 0.16),
     0 4px 12px rgba(0, 0, 0, 0.16);
+}
+
+/* layout */
+:root {
+  --mmc-layout-max-width: 1440px;
 }
