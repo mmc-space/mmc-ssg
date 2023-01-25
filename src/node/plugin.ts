@@ -66,8 +66,7 @@ export const pluginRoutes = (config?: SiteConfig): Plugin => {
   return {
     name: 'vite-plugin-routes',
     resolveId(id) {
-      if (id === virtualModuleId)
-        return resolvedVirtualModuleId
+      if (id === virtualModuleId) return resolvedVirtualModuleId
     },
 
     load(id) {
@@ -81,14 +80,17 @@ export const pluginRoutes = (config?: SiteConfig): Plugin => {
   }
 }
 
-export const pluginSvgr = (options: SvgrOptions = {}): Plugin => {
+export const pluginSvgr = (
+  options: {
+    defaultExport?: 'url' | 'component'
+  } = {},
+): Plugin => {
   const { defaultExport = 'component' } = options
 
   return {
-    name: 'svgr-plugin',
+    name: 'vite-plugin-svgr',
     async transform(code, id) {
-      if (!id.endsWith('.svg'))
-        return code
+      if (!id.endsWith('.svg')) return code
 
       const svgrTransform = await (await import('@svgr/core')).transform
       const esbuild = await import('esbuild')
