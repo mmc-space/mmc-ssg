@@ -92,7 +92,7 @@ export const pluginSvgr = (
     async transform(code, id) {
       if (!id.endsWith('.svg')) return code
 
-      const svgrTransform = await (await import('@svgr/core')).transform
+      const svgrTransform = (await import('@svgr/core')).transform
       const esbuild = await import('esbuild')
       const svg = await fs.promises.readFile(id, 'utf8')
       const svgrResult = await svgrTransform(
