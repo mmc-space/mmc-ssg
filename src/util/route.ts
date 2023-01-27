@@ -39,7 +39,7 @@ export const getFiles = (options?: RouteOptions) => {
 
     const route: RouteObject = {
       path,
-      // to do replace react components
+      // todo: replace react components
       element: path,
     }
 

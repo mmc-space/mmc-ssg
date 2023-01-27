@@ -12,7 +12,13 @@
   "bin": {
     "mmc-ssg": "./bin/mmc.js"
   },
-  "keywords": [],
+  "keywords": [
+    "vite",
+    "ssg",
+    "react",
+    "mdx",
+    "docs"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {

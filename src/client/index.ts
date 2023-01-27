@@ -1,1 +1,1 @@
-console.log('e123')
+export * from './app'

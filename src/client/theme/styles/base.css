@@ -75,7 +75,7 @@ b {
 a,
 area,
 button,
-[role='button'],
+[role="button"],
 input,
 label,
 select,
@@ -147,7 +147,7 @@ button {
 }
 
 button:enabled,
-[role='button']:enabled {
+[role="button"]:enabled {
   cursor: pointer;
 }
 
@@ -196,7 +196,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type='number'] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 

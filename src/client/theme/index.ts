@@ -3,8 +3,4 @@ import './styles/vars.css'
 // import './styles/doc.css'
 import 'uno.css'
 
-import Layout from './Layout'
-
-export default {
-  Layout,
-}
+export * from './layout'

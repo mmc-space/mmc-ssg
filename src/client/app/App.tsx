@@ -1,12 +1,30 @@
+import type { FC } from 'react'
+import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { routes } from 'virtual:routes'
-import Theme from '../theme'
+import { Layout } from '../theme'
+import { getPageData, usePageData } from './hooks'
 
-const App = () => {
+const App: FC = () => {
   const { pathname } = useLocation()
+  const { setData } = usePageData()
   console.log('routes', routes, pathname)
 
-  return <Theme.Layout />
+  useEffect(() => {
+    const refetchData = async () => {
+      try {
+        const pageData = await getPageData(pathname)
+        // setData(pageData)
+        console.log('pageData', pageData, setData)
+      }
+      catch (e) {
+        console.log(e)
+      }
+    }
+    refetchData()
+  }, [pathname])
+
+  return <Layout />
 }
 
 export default App

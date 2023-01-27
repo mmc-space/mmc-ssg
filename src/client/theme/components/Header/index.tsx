@@ -36,7 +36,7 @@ export const Header: FC<HeaderProps> = (props) => {
             </div>
             <nav className="flex items-center">
               {['指南', '教程', 'API'].map(content => (
-                <a className="flex items-center p-3 text-sm font-medium">
+                <a className="flex items-center p-3 text-sm font-medium" key={content}>
                   {content}
                 </a>
               ))}
