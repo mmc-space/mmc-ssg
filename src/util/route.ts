@@ -17,8 +17,13 @@ const getDeepFiles = (root: string, prefix?: string) => {
       routes.push(...getDeepFiles(rootPath, file))
     }
     else {
-      const [fileName] = file.split('.')
-      routes.push(prefix ? `${prefix}/${fileName}` : fileName)
+      // todo: check empty dir
+
+      let [fileName] = file.split('.')
+
+      fileName = fileName === 'index' ? '' : `/${fileName}`
+
+      routes.push(prefix ? `/${prefix}${fileName}` : fileName || '/')
     }
   }
 
