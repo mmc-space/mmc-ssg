@@ -1,7 +1,7 @@
 import { join } from 'node:path'
 import { fileURLToPath } from 'url'
 
-export const ROOT_PATH = join(fileURLToPath(import.meta.url), '../../..')
+export const ROOT_PATH = join(fileURLToPath(import.meta.url), '../..')
 
 export const CLIENT_PATH = join(ROOT_PATH, 'src', 'client')
 

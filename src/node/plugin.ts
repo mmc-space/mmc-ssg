@@ -3,7 +3,7 @@ import type { Plugin } from 'vite'
 
 import fs from 'fs-extra'
 
-import { generateRoutesCode } from '../util/route'
+import { generateRoutesCode } from './route'
 import type { SiteConfig } from './config'
 import { CLIENT_ENTRY_PATH } from './constants'
 

@@ -1,7 +1,6 @@
 import { resolve } from 'node:path'
 import fs from 'fs-extra'
-import type { RouteOptions } from 'types/config'
-import type { RouteObject } from 'react-router-dom'
+import type { RouteOptions } from '.'
 
 interface RouteMeta {
   routePath: string
@@ -10,24 +9,24 @@ interface RouteMeta {
 
 const getDeepFiles = (root: string, prefix?: string) => {
   const routes: RouteMeta[] = []
+  const ignore = ['node_modules']
   const rootPath = prefix ? resolve(root, prefix) : root
   if (!fs.existsSync(rootPath)) return routes
 
   const files = fs.readdirSync(rootPath)
 
   for (const file of files) {
+    // eslint-disable-next-line prefer-const
+    let [fileName, ext] = file.split('.')
+
     const filePath = resolve(rootPath, file)
     const fileStat = fs.statSync(filePath)
-    if (fileStat.isDirectory()) {
+    if (fileStat.isDirectory() && !ignore.includes(fileName)) {
       routes.push(...getDeepFiles(rootPath, file))
     }
-    else {
+    else if (['md', 'mdx', 'tsx'].includes(ext)) {
       // todo: check empty dir
-
-      let [fileName] = file.split('.')
       fileName = fileName === 'index' ? '' : `/${fileName}`
-
-      console.log(resolve(rootPath, filePath), 'ppp')
 
       routes.push({
         routePath: prefix ? `/${prefix}${fileName}` : fileName || '/',
@@ -45,17 +44,12 @@ export const generateRoutesCode = (
   const { root = process.cwd(), include = [], exclude = [] } = options ?? {}
 
   const namePrefix = 'Page'
-  const routes = getDeepFiles(root).reduce<Array<RouteMeta & RouteObject>>(
-    (routes, path) => {
-      if (include.length && !include.includes(path.routePath)) return routes
-      if (exclude.length && exclude.includes(path.routePath)) return routes
+  const routes = getDeepFiles(root).reduce<Array<RouteMeta>>(
+    (routes, route) => {
+      if (include.length && !include.includes(route.routePath)) return routes
+      if (exclude.length && exclude.includes(route.routePath)) return routes
 
-      const route = {
-        ...path,
-        // todo: replace react components
-        element: null,
-      }
-
+      // todo: replace react components
       routes.push(route)
       return routes
     },
@@ -65,21 +59,15 @@ export const generateRoutesCode = (
   return `
     import React from 'react'
 
-    ${routes
-      .map(
-        (route, index) =>
-          `const ${namePrefix}${index} = React.lazy(() => import('${route.filePath}'))`,
-      )
-      .join('\n')}
+    ${
+      routes.map((route, index) => `const ${namePrefix}${index} = React.lazy(() => import('${route.filePath}'))`)
+      .join('\n')
+    }
 
     export const routes = [
-      ${routes
-        .map(
-          (route, index) => `{
+      ${routes.map((route, index) => `{
         path: '${route.routePath}',
         element: React.createElement(${`${namePrefix}${index}`}),
-      }`,
-        )
-        .join(',\n')}
+      }`).join(',\n')}
     ]`
 }

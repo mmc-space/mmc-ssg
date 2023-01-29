@@ -1,17 +1,6 @@
 {
   "name": "@mmc-cloud/ssg",
   "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "scripts": {
-    "preinstall": "npx -y only-allow pnpm",
-    "fix": "eslint --fix --ext .ts,.tsx src/**/* --no-ignore",
-    "dev": "mmc-ssg --config mmc.config.ts docs",
-    "build": "rollup --config rollup.config.ts --configPlugin esbuild"
-  },
-  "bin": {
-    "mmc-ssg": "./bin/mmc.js"
-  },
   "keywords": [
     "vite",
     "ssg",
@@ -19,8 +8,32 @@
     "mdx",
     "docs"
   ],
-  "author": "",
+  "author": "codeDaiQin",
   "license": "ISC",
+  "description": "Vite & MDX & React powered static site generator.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "preinstall": "npx -y only-allow pnpm",
+    "fix": "eslint --fix --ext .ts,.tsx src/**/* --no-ignore",
+    "dev": "mmc-ssg docs",
+    "build": "rollup --config rollup.config.ts --configPlugin esbuild"
+  },
+  "bin": {
+    "mmc-ssg": "./bin/mmc.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./dist/*": "./dist/*"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
   "devDependencies": {
     "@mmc-cloud/eslint-config-ts": "^1.0.1",
     "@rollup/plugin-json": "^6.0.0",
@@ -31,8 +44,9 @@
     "cac": "^6.7.14",
     "eslint": "^8.31.0",
     "rollup": "^3.10.0",
+    "rollup-plugin-dts": "^5.1.1",
     "rollup-plugin-esbuild": "^5.0.0",
-    "typescript": "5.0.0-dev.20230114"
+    "typescript": "4"
   },
   "dependencies": {
     "@svgr/core": "^6.5.1",

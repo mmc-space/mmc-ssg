@@ -1,8 +1,33 @@
 import { resolve } from 'node:path'
 import fs from 'fs-extra'
 import { loadConfigFromFile } from 'vite'
-import type { UserConfig } from 'types/config'
 import { DEFAULT_THEME_PATH } from './constants'
+
+export interface RouteOptions {
+  /** 根目录 */
+  root?: string
+
+  /** 统一前缀 */
+  prefix?: string
+  /**
+   * The extension name of the filepath that will be converted to a route
+   * @default ['js','jsx','ts','tsx','md','mdx']
+   */
+  extensions?: string[]
+
+  include?: string[]
+
+  exclude?: string[]
+}
+
+export interface UserConfig<ThemeConfig = unknown> {
+  title?: string
+
+  themeConfig?: ThemeConfig
+
+  /** 约定式路由 */
+  route?: RouteOptions
+}
 
 export interface SiteConfig {
   pages: string[]

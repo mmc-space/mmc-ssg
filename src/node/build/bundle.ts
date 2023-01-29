@@ -1,8 +1,8 @@
 import type { InlineConfig } from 'vite'
 import { build } from 'vite'
 import type { RollupOutput } from 'rollup'
-import { CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from 'node/constants'
 import pluginReact from '@vitejs/plugin-react'
+import { CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from '../constants'
 import { pluginHtmlTemplate, pluginRoutes } from '../plugin'
 
 const resolveViteConfig = async (
