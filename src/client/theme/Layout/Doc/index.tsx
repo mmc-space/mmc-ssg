@@ -1,13 +1,13 @@
 import type { FC } from 'react'
-import { usePageData } from '../../../'
+import { usePageData } from '@client'
 
 export const DocLayout: FC = () => {
-  const pageData = usePageData()
-  console.log('p', pageData)
+  const { data } = usePageData()
 
   return (
     <div>
       DocLayout
+      {data?.element}
     </div>
   )
 }

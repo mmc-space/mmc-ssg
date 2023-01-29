@@ -3,7 +3,7 @@ import type { Plugin } from 'vite'
 
 import fs from 'fs-extra'
 
-import { getFiles } from '../util/route'
+import { generateRoutesCode } from '../util/route'
 import type { SiteConfig } from './config'
 import { CLIENT_ENTRY_PATH } from './constants'
 
@@ -69,11 +69,11 @@ export const pluginRoutes = (config?: SiteConfig): Plugin => {
       if (id === virtualModuleId) return resolvedVirtualModuleId
     },
 
-    load(id) {
+    load(id, options) {
       if (id === resolvedVirtualModuleId) {
-        const routes = getFiles(config)
         return {
-          code: `export const routes = ${JSON.stringify(routes)}`,
+          code: generateRoutesCode({ ...config, ssr: options?.ssr }),
+          moduleSideEffects: false,
         }
       }
     },

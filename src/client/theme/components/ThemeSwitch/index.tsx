@@ -22,8 +22,12 @@ export const ThemeSwitch: FC = () => {
 
   return (
     <Switch onClick={toggle}>
-      <SunSvg className={styles.sun} />
-      <MoonSvg className={styles.moon} />
+      <div className={styles.sun}>
+        <SunSvg />
+      </div>
+      <div className={styles.moon}>
+        <MoonSvg />
+      </div>
     </Switch>
   )
 }

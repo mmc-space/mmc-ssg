@@ -2,11 +2,14 @@ import { resolve } from 'node:path'
 import fs from 'fs-extra'
 import { loadConfigFromFile } from 'vite'
 import type { UserConfig } from 'types/config'
+import { DEFAULT_THEME_PATH } from './constants'
 
 export interface SiteConfig {
   pages: string[]
   root: string
   command: 'serve' | 'build'
+
+  themeDir?: string
 }
 
 export const defineConfig = (config: UserConfig) => config
@@ -36,15 +39,20 @@ export const resolveConfig = async (
   customizeConfig?: string,
 ) => {
   const userConfig = await resolveUserConfig(root, command, mode, customizeConfig)
-
-  console.log(userConfig)
+  const userThemeDir = resolve(root, 'theme')
+  const themeDir = fs.pathExistsSync(userThemeDir)
+    ? userThemeDir
+    : DEFAULT_THEME_PATH
 
   const config: SiteConfig = {
     pages: ['404.md', '约定式路由.md'],
     root,
     command,
+    themeDir,
     ...userConfig,
   }
+
+  console.log(config)
 
   return config
 }

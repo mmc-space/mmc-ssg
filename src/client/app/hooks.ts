@@ -1,12 +1,13 @@
 import { createContext, useContext } from 'react'
+import type { RouteObject } from 'react-router-dom'
 import { matchRoutes } from 'react-router-dom'
 import { routes } from 'virtual:routes'
 
-export type PageType = 'doc' | '404' | 'home' | 'custom'
+export type PageType = 'doc' | '404' | 'home'
 
-export interface PageData {
+export type PageData = {
   pageType: PageType
-}
+} & RouteObject
 
 export interface IPageDataContext {
   data: null | PageData
@@ -26,10 +27,9 @@ export const getPageData = async (routePath: string): Promise<PageData> => {
   if (matched) {
     const [{ route }] = matched
 
-    console.log(route, 'route')
-
     return {
-      pageType: 'doc',
+      ...route,
+      pageType: route.path === '/' ? 'home' : 'doc',
     }
   }
 

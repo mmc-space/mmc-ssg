@@ -1,11 +1,12 @@
-import { Content, usePageData } from '../../app'
+import { usePageData } from '@client'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 
-import styles from './index.module.less'
 import { HomeLayout } from './Home'
 import { DocLayout } from './Doc'
 import { NotFound } from './NotFount'
+
+import styles from './index.module.less'
 
 export const Layout = () => {
   const { data } = usePageData()
@@ -19,8 +20,8 @@ export const Layout = () => {
         return <DocLayout />
       case '404':
         return <NotFound />
-      case 'custom':
-        return <Content />
+      // case 'custom':
+      //   return <Content />
       default:
         return <DocLayout />
     }
