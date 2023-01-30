@@ -15,7 +15,7 @@ export const Header: FC<HeaderProps> = (props) => {
 
   return (
     <header className="fixed top-0 left-0 w-full">
-      <div className="px-8">
+      <div className={classNames('px-8', styles.fill)}>
         <div
           className={classNames(
             'flex',

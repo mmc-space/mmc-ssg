@@ -12,3 +12,5 @@ export const SERVER_ENTRY_PATH = join(APP_PATH, 'ssr.tsx')
 export const CLIENT_ENTRY_PATH = join(APP_PATH, 'client.tsx')
 
 export const DEFAULT_THEME_PATH = join(CLIENT_PATH, 'theme')
+
+export const DEFAULT_EXCLUDE = ['**/node_modules', 'mmc.config.ts', 'mmc.config.js', '**/.*', '**/dist/**']

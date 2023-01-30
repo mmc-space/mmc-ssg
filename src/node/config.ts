@@ -1,7 +1,9 @@
-import { resolve } from 'node:path'
+import path, { resolve } from 'node:path'
+import { loadConfigFromFile, normalizePath } from 'vite'
 import fs from 'fs-extra'
-import { loadConfigFromFile } from 'vite'
-import { DEFAULT_THEME_PATH } from './constants'
+import fg from 'fast-glob'
+import { DEFAULT_EXCLUDE, DEFAULT_THEME_PATH } from './constants'
+import { normalizeRoutePath } from './route'
 
 export interface RouteOptions {
   /** 根目录 */
@@ -30,7 +32,7 @@ export interface UserConfig<ThemeConfig = unknown> {
 }
 
 export interface SiteConfig {
-  pages: string[]
+  pages: { path: string; filePath: string }[]
   root: string
   command: 'serve' | 'build'
 
@@ -41,7 +43,9 @@ export const defineConfig = (config: UserConfig) => config
 
 const getUserConfigPath = (root: string) => {
   const configFileName = 'mmc.config'
-  const configPath = ['ts', 'js'].map(ext => resolve(root, `${configFileName}.${ext}`)).find(fs.pathExistsSync)
+  const configPath = ['ts', 'js']
+    .map(ext => resolve(root, `${configFileName}.${ext}`))
+    .find(fs.pathExistsSync)
 
   return configPath
 }
@@ -53,7 +57,12 @@ const resolveUserConfig = async (
   customizeConfig?: string,
 ) => {
   const configPath = getUserConfigPath(root)
-  const result = await loadConfigFromFile({ command, mode }, customizeConfig || configPath, root)
+  const result = await loadConfigFromFile(
+    { command, mode },
+    customizeConfig || configPath,
+    root,
+  )
+
   return result
 }
 
@@ -63,14 +72,42 @@ export const resolveConfig = async (
   mode: 'development' | 'production',
   customizeConfig?: string,
 ) => {
-  const userConfig = await resolveUserConfig(root, command, mode, customizeConfig)
+  const userConfig = (await resolveUserConfig(
+    root,
+    command,
+    mode,
+    customizeConfig,
+  )) as UserConfig
   const userThemeDir = resolve(root, 'theme')
   const themeDir = fs.pathExistsSync(userThemeDir)
     ? userThemeDir
     : DEFAULT_THEME_PATH
+  const { extensions = ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'], exclude = [], include = [] }
+    = userConfig.route ?? {}
+
+  const files = (
+    await fg([`**/*.{${extensions.join(',')}}`, ...include], {
+      cwd: root,
+      absolute: true,
+      ignore: [...DEFAULT_EXCLUDE, ...exclude],
+    })
+  ).sort()
+
+  const pages = files.map((file) => {
+    const fileRelativePath = normalizePath(
+      path.relative(root, file),
+    )
+
+    const routePath = normalizeRoutePath(fileRelativePath)
+
+    return {
+      path: routePath,
+      filePath: file,
+    }
+  })
 
   const config: SiteConfig = {
-    pages: ['404.md', '约定式路由.md'],
+    pages,
     root,
     command,
     themeDir,

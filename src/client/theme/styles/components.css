@@ -1,0 +1,70 @@
+/* home */
+:root {
+  --mmc-home-hero-name-color: transparent;
+  --mmc-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    var(--mmc-theme-brand) 30%,
+    #41d1ff
+  );
+
+  --mmc-home-hero-image-background-image: none;
+  --mmc-home-hero-image-filter: none;
+}
+
+/* button */
+:root {
+  --mmc-button-brand-border: var(--mmc-theme-brand-light);
+  --mmc-button-brand-text: var(--mmc-theme-text-dark-1);
+  --mmc-button-brand-bg: var(--mmc-theme-brand);
+  --mmc-button-brand-hover-border: var(--mmc-theme-brand-light);
+  --mmc-button-brand-hover-text: var(--mmc-theme-text-dark-1);
+  --mmc-button-brand-hover-bg: var(--mmc-theme-brand-light);
+  --mmc-button-brand-active-border: var(--mmc-theme-brand-light);
+  --mmc-button-brand-active-text: var(--mmc-theme-text-dark-1);
+  --mmc-button-brand-active-bg: var(--mmc-button-brand-bg);
+
+  --mmc-button-alt-border: var(--mmc-theme-gray-light-3);
+  --mmc-button-alt-text: var(--mmc-theme-text-light-1);
+  --mmc-button-alt-bg: var(--mmc-theme-gray-light-5);
+  --mmc-button-alt-hover-border: var(--mmc-theme-gray-light-3);
+  --mmc-button-alt-hover-text: var(--mmc-theme-text-light-1);
+  --mmc-button-alt-hover-bg: var(--mmc-theme-gray-light-4);
+  --mmc-button-alt-active-border: var(--mmc-theme-gray-light-3);
+  --mmc-button-alt-active-text: var(--mmc-theme-text-light-1);
+  --mmc-button-alt-active-bg: var(--mmc-theme-gray-light-3);
+
+  --mmc-button-sponsor-border: var(--mmc-theme-gray-light-3);
+  --mmc-button-sponsor-text: var(--mmc-theme-text-light-2);
+  --mmc-button-sponsor-bg: transparent;
+  --mmc-button-sponsor-hover-border: var(--mmc-theme-sponsor);
+  --mmc-button-sponsor-hover-text: var(--mmc-theme-sponsor);
+  --mmc-button-sponsor-hover-bg: transparent;
+  --mmc-button-sponsor-active-border: var(--mmc-theme-sponsor);
+  --mmc-button-sponsor-active-text: var(--mmc-theme-sponsor);
+  --mmc-button-sponsor-active-bg: transparent;
+}
+
+.dark {
+  --mmc-button-brand-border: var(--mmc-theme-brand-light);
+  --mmc-button-brand-text: var(--mmc-theme-text-dark-1);
+  --mmc-button-brand-bg: var(--mmc-theme-brand-dark);
+  --mmc-button-brand-hover-border: var(--mmc-theme-brand-lighter);
+  --mmc-button-brand-hover-text: var(--mmc-theme-text-dark-1);
+  --mmc-button-brand-hover-bg: var(--mmc-theme-brand);
+  --mmc-button-brand-active-border: var(--mmc-theme-brand-lighter);
+  --mmc-button-brand-active-text: var(--mmc-theme-text-dark-1);
+  --mmc-button-brand-active-bg: var(--mmc-button-brand-bg);
+
+  --mmc-button-alt-border: var(--mmc-theme-gray-dark-2);
+  --mmc-button-alt-text: var(--mmc-theme-text-dark-1);
+  --mmc-button-alt-bg: var(--mmc-theme-bg-mute);
+  --mmc-button-alt-hover-border: var(--mmc-theme-gray-dark-2);
+  --mmc-button-alt-hover-text: var(--mmc-theme-text-dark-1);
+  --mmc-button-alt-hover-bg: var(--mmc-theme-gray-dark-2);
+  --mmc-button-alt-active-border: var(--mmc-theme-gray-dark-2);
+  --mmc-button-alt-active-text: var(--mmc-theme-text-dark-1);
+  --mmc-button-alt-active-bg: var(--mmc-button-alt-bg);
+
+  --mmc-button-sponsor-border: var(--mmc-theme-gray-dark-1);
+  --mmc-button-sponsor-text: var(--mmc-theme-text-dark-2);
+}

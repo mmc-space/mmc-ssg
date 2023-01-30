@@ -11,7 +11,7 @@ export const build = async (root: string = process.cwd()) => {
   const entryPath = join(root, 'temp', 'ssr.mjs')
   const { render } = await import(entryPath)
 
-  const pages = ['404.md', ...siteConfig.pages]
+  const pages = [...siteConfig.pages]
 
   try {
     const appChunk
@@ -25,7 +25,7 @@ export const build = async (root: string = process.cwd()) => {
 
     await Promise.all(
       pages.map(page =>
-        renderPage(root, render, page, clientResult, appChunk),
+        renderPage(root, render, page.filePath, clientResult, appChunk),
       ),
     )
   }

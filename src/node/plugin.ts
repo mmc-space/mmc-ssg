@@ -1,6 +1,7 @@
 import type { OutputAsset, OutputChunk } from 'rollup'
 import type { Plugin } from 'vite'
 
+import pluginMdxRollup from '@mdx-js/rollup'
 import fs from 'fs-extra'
 
 import { generateRoutesCode } from './route'
@@ -59,7 +60,7 @@ export const pluginHtmlTemplate = (): Plugin => ({
   },
 })
 
-export const pluginRoutes = (config?: SiteConfig): Plugin => {
+export const pluginRoutes = (config: SiteConfig): Plugin => {
   const virtualModuleId = 'virtual:routes'
   const resolvedVirtualModuleId = `\0${virtualModuleId}`
 
@@ -71,8 +72,10 @@ export const pluginRoutes = (config?: SiteConfig): Plugin => {
 
     load(id, options) {
       if (id === resolvedVirtualModuleId) {
+        console.log(options?.ssr ? 'ssr' : 'not ssr')
+
         return {
-          code: generateRoutesCode({ ...config, ssr: options?.ssr }),
+          code: generateRoutesCode(config),
           moduleSideEffects: false,
         }
       }
@@ -114,4 +117,10 @@ export const pluginSvgr = (
       return result.code
     },
   }
+}
+
+export const pluginMDX = async (config: SiteConfig): Promise<Plugin> => {
+  console.log(config)
+
+  return pluginMdxRollup()
 }
