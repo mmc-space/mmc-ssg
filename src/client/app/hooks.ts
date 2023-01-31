@@ -6,7 +6,7 @@ import { routes } from 'virtual:routes'
 export type PageType = 'doc' | '404' | 'home'
 
 export interface Feature {
-  icon: string
+  icon?: string
   title: string
   details: string
 }

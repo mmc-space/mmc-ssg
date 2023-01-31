@@ -1,3 +1,25 @@
+@media (min-width: 960px) {
+  .container {
+    flex-direction: row;
+    padding: 5rem 4rem 4rem 4rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .main {
+    order: 1;
+    width: calc((100% / 3) * 2);
+    text-align: left;
+    max-width: 592px;
+  }
+}
+
+@media (min-width: 960px) {
+  .actions {
+    justify-content: start;
+  }
+}
+
 .clip {
   background: var(--mmc-home-hero-name-background);
   background: var(--mmc-home-hero-name-background);
@@ -8,4 +30,43 @@
 
 .tagline {
   color: var(--mmc-theme-text-2);
+}
+
+.icon {
+  background-color: var(--mmc-theme-gray-light-4);
+}
+
+.article {
+  border-color: var(--mmc-theme-bg-soft);
+  background: var(--mmc-theme-bg-soft);
+}
+
+.details {
+  color: var(--mmc-theme-text-2);
+}
+
+@media (min-width: 640px) {
+  .grid-2,
+  .grid-4,
+  .grid-6 {
+    width: calc(100% / 2);
+  }
+}
+
+@media (min-width: 768px) {
+  .grid-2,
+  .grid-4 {
+    width: calc(100% / 2);
+  }
+
+  .grid-3,
+  .grid-6 {
+    width: calc(100% / 3);
+  }
+}
+
+@media (min-width: 960px) {
+  .grid-4 {
+    width: calc(100% / 3);
+  }
 }
