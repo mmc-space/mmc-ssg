@@ -5,3 +5,9 @@ declare module 'virtual:routes' {
 
   export const routes: Route[]
 }
+
+declare module 'virtual:siteData' {
+  import type { SiteData, DefaultTheme } from './node'
+
+  export const siteData: SiteData<DefaultTheme.Config>
+}

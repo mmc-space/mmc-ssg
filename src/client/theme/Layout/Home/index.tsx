@@ -49,6 +49,7 @@ const getGridClass = (count?: number) => {
 
 export const HomeLayout: FC = () => {
   const frontmatter = useFrontmatter()
+  console.log(frontmatter, '=frontmatter')
   const hero = frontmatter?.hero || DEFAULT_HERO
   const features = frontmatter?.features ?? DEFAULT_FEATURES
   const gridClass = getGridClass(features.length)

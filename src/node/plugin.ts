@@ -2,6 +2,8 @@ import type { OutputAsset, OutputChunk } from 'rollup'
 import type { Plugin } from 'vite'
 
 import pluginMdxRollup from '@mdx-js/rollup'
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import fs from 'fs-extra'
 
 import { generateRoutesCode } from './route'
@@ -121,6 +123,30 @@ export const pluginSvgr = (
 
 export const pluginMDX = async (config: SiteConfig): Promise<Plugin> => {
   console.log(config)
+  return pluginMdxRollup({
+    jsx: true,
+    remarkPlugins: [
+      remarkFrontmatter,
+      [remarkMdxFrontmatter, { name: 'frontmatter' }],
+    ],
+  })
+}
 
-  return pluginMdxRollup()
+export const pluginSiteData = (config: SiteConfig): Plugin => {
+  const virtualModuleId = 'virtual:siteData'
+  const resolvedVirtualModuleId = `\0${virtualModuleId}`
+
+  return {
+    name: 'vite-plugin-siteData',
+    resolveId(id) {
+      if (id === virtualModuleId) return resolvedVirtualModuleId
+    },
+    load(id) {
+      if (id === resolvedVirtualModuleId) {
+        return {
+          code: `export const siteData = ${JSON.stringify(config)}`,
+        }
+      }
+    },
+  }
 }

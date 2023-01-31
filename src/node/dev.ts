@@ -5,6 +5,7 @@ import {
   pluginHtmlTemplate,
   pluginMDX,
   pluginRoutes,
+  pluginSiteData,
   pluginSvgr,
 } from './plugin'
 import { resolveConfig } from './config'
@@ -31,6 +32,7 @@ export const createDevServer = async (root: string, cliOptions: CLIOptions) => {
       pluginSvgr(),
       pluginMDX(config),
       UnoCSS(),
+      pluginSiteData(config),
       pluginRoutes(config),
       pluginReact(),
     ],

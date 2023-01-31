@@ -1,7 +1,9 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import type { RouteObject } from 'react-router-dom'
 import { matchRoutes } from 'react-router-dom'
 import { routes } from 'virtual:routes'
+import { siteData } from 'virtual:siteData'
+import type { DefaultTheme } from '../../node'
 
 export type PageType = 'doc' | '404' | 'home'
 
@@ -38,7 +40,20 @@ export interface FrontMatterMeta {
   lineNumbers?: boolean
 }
 
+export interface SiteData<ThemeConfig = unknown> {
+  root: string
+  base: string
+  lang: string
+  title: string
+  description: string
+  icon: string
+  themeConfig: ThemeConfig
+  appearance: boolean
+}
+
 export type PageData = {
+  siteData?: SiteData<DefaultTheme.Config>
+  title?: string
   pageType: PageType
   frontmatter?: FrontMatterMeta
 } & RouteObject
@@ -60,33 +75,26 @@ export const getPageData = async (routePath: string): Promise<PageData> => {
 
   if (matched) {
     const [{ route }] = matched
-
+    // const mod = await ()
     return {
       ...route,
+      siteData,
+      frontmatter: route.element,
       pageType: route.path === '/' ? 'home' : 'doc',
     }
   }
 
   return {
+    siteData,
     pageType: '404',
   }
 }
 
 export const useFrontmatter = () => {
   const { data } = usePageData()
-  const [frontmatter, setFrontmatter] = useState(data?.frontmatter)
 
-  useEffect(() => {
-    if (import.meta.env.DEV) {
-      import.meta.hot?.on('md(x)-changed', ({ filePath, routePath }) => {
-        import(/* @vite-ignore */ `${filePath}?import&t=${Date.now()}`).then(
-          (mod) => {
-            data?.path === routePath && setFrontmatter(mod.frontmatter)
-          },
-        )
-      })
-    }
-  }, [data?.path])
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [frontmatter, setFrontmatter] = useState(data?.frontmatter)
 
   return frontmatter
 }
