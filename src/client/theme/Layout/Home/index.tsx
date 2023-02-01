@@ -28,14 +28,19 @@ const DEFAULT_HERO: Hero = {
 
 const DEFAULT_FEATURES: Feature[] = [
   {
-    title: 'title',
-    details: '2023年01月31日 星期二',
+    title: 'Vite: 极速的开发响应速度',
+    details: '基于 Vite 构建，开发时的响应速度极快，即时的热更新，带给你极致的开发体验。',
     icon: '🚀',
   },
   {
-    title: 'title2',
-    details: '2023年01月31日 星期二',
-    icon: 'i',
+    title: 'MDX: Markdown & React 组件来写内容',
+    details: 'MDX 是一种强大的方式来写内容。你可以在 Markdown 中使用 React 组件。',
+    icon: '📦',
+  },
+  {
+    icon: '🛠️',
+    title: '功能丰富: 一站式解决方案',
+    details: '对全文搜索、国际化等常见功能可以做到开箱即用。',
   },
 ]
 
@@ -49,7 +54,6 @@ const getGridClass = (count?: number) => {
 
 export const HomeLayout: FC = () => {
   const frontmatter = useFrontmatter()
-  console.log(frontmatter, '=frontmatter')
   const hero = frontmatter?.hero || DEFAULT_HERO
   const features = frontmatter?.features ?? DEFAULT_FEATURES
   const gridClass = getGridClass(features.length)

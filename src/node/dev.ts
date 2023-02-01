@@ -10,7 +10,7 @@ import {
 } from './plugin'
 import { resolveConfig } from './config'
 import type { CLIOptions } from './cli'
-import { CLIENT_PATH } from './constants'
+import { CLIENT_PATH, NODE_PATH } from './constants'
 
 export const createDevServer = async (root: string, cliOptions: CLIOptions) => {
   const config = await resolveConfig(
@@ -25,6 +25,7 @@ export const createDevServer = async (root: string, cliOptions: CLIOptions) => {
     resolve: {
       alias: {
         '@client': `${CLIENT_PATH}`,
+        '@node': `${NODE_PATH}`,
       },
     },
     plugins: [

@@ -15,6 +15,7 @@
     "lib": ["ESNext", "DOM"],
     "paths": {
       "@client": ["client/index.ts"],
+      "@node": ["node/index.ts"],
     }
   },
   "include": ["src"],

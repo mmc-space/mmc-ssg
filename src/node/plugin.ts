@@ -124,7 +124,6 @@ export const pluginSvgr = (
 export const pluginMDX = async (config: SiteConfig): Promise<Plugin> => {
   console.log(config)
   return pluginMdxRollup({
-    jsx: true,
     remarkPlugins: [
       remarkFrontmatter,
       [remarkMdxFrontmatter, { name: 'frontmatter' }],
