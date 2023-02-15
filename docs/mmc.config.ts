@@ -6,6 +6,12 @@ export default defineConfig({
   },
   title: '🐛 ssg!',
   themeConfig: {
+    nav: [
+      {
+        text: '指南',
+        link: '/guide/getting-started',
+      },
+    ],
     sidebar: {
       '/guide': [
         {
@@ -13,7 +19,7 @@ export default defineConfig({
           items: [
             {
               text: '快速开始',
-              link: '/aa',
+              link: '/guide/getting-started',
             },
           ],
         },

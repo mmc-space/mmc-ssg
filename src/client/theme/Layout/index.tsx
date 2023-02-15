@@ -10,6 +10,10 @@ import styles from './index.module.less'
 
 export const Layout = () => {
   const { data } = usePageData()
+  const { siteData } = data ?? {}
+  // console.log(1, '===')
+  const nav = Object.values(siteData?.themeConfig.nav || [])
+
   const { pageType } = data!
 
   const getContentLayout = () => {
@@ -29,7 +33,7 @@ export const Layout = () => {
 
   return (
     <>
-      <Header title="mmc-ssg" />
+      <Header title={siteData?.title ?? 'mmc-ssg'} nav={nav} />
       <main className={styles['mmc-content']}>{getContentLayout()}</main>
       <Footer />
     </>

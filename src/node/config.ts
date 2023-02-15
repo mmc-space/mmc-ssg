@@ -280,7 +280,7 @@ export interface RouteOptions {
   exclude?: string[]
 }
 
-export interface UserConfig<ThemeConfig = unknown> {
+export interface UserConfig<ThemeConfig = DefaultTheme.Config> {
   title?: string
 
   themeConfig?: ThemeConfig

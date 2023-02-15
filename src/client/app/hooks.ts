@@ -40,7 +40,7 @@ export interface FrontMatterMeta {
   lineNumbers?: boolean
 }
 
-export interface SiteData<ThemeConfig = unknown> {
+export interface SiteData<ThemeConfig = DefaultTheme.Config> {
   root: string
   base: string
   lang: string

@@ -101,6 +101,16 @@
   }
 }
 
+/* sidebar */
+:root {
+  --mmc-sidebar-width: 272px;
+}
+@media (min-width: 960px) {
+  :root {
+    --mmc-sidebar-width: 420px;
+  }
+}
+
 /* theme */
 :root {
   --mmc-theme-bg: var(--mmc-theme-white);

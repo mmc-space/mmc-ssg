@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 import classNames from 'classnames'
 
+import type { DefaultTheme } from '@node'
 import { Search } from '../Search'
 import { ThemeSwitch } from '../ThemeSwitch'
 
@@ -8,13 +9,14 @@ import styles from './index.module.less'
 
 export interface HeaderProps {
   title?: string
+  nav?: DefaultTheme.NavItem[]
 }
 
 export const Header: FC<HeaderProps> = (props) => {
-  const { title } = props
+  const { title, nav = [] } = props
 
   return (
-    <header className="fixed top-0 left-0 w-full">
+    <header className="z-2 fixed top-0 left-0 w-full">
       <div className={classNames('px-8', styles.fill)}>
         <div
           className={classNames(
@@ -35,10 +37,12 @@ export const Header: FC<HeaderProps> = (props) => {
               <Search />
             </div>
             <nav className="flex items-center">
-              {['指南', '教程', 'API'].map(content => (
-                <a className="flex items-center p-3 text-sm font-medium" key={content}>
-                  {content}
+              {nav.map(item => (
+                'link' in item
+                  ? <a className="flex items-center p-3 text-sm font-medium" key={item.text} href={item.link}>
+                  {item.text}
                 </a>
+                  : null
               ))}
             </nav>
             <div className="theme">

@@ -1,11 +1,14 @@
-import { useSidebarData } from '@client'
-import type { DefaultTheme } from '@node'
-
-import type { FC } from 'react'
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useSidebarData } from '@client'
 
-export const SiderBar: FC = () => {
+import type { DefaultTheme } from '@node'
+import type { FC } from 'react'
+
+import classNames from 'classnames'
+import styles from './index.module.less'
+
+export const SideBar: FC = () => {
   const { pathname } = useLocation()
   const { items } = useSidebarData(pathname)
   const [collapseList, setCollapseList] = useState(
@@ -69,7 +72,7 @@ export const SiderBar: FC = () => {
   }
 
   return (
-    <aside>
+    <aside className={classNames('fixed top-0 left-0 bottom-0 px-8 z-1', styles.sidebar)}>
       <nav>{items.map((item, index) => renderGroup(item!, index))}</nav>
     </aside>
   )
