@@ -61,7 +61,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.2",
+    "remark-directive": "^2.0.1",
     "remark-frontmatter": "^4.0.1",
+    "remark-gemoji": "^7.0.1",
+    "remark-gfm": "^3.0.1",
     "remark-mdx-frontmatter": "^2.1.1",
     "unocss": "^0.48.4",
     "vite": "^4.0.4"

@@ -15,12 +15,12 @@ const DEFAULT_HERO: Hero = {
     {
       text: 'Get Started',
       theme: 'brand',
-      link: '/',
+      link: '/guide/getting-started',
     },
     {
       text: 'View on GitHub',
       theme: 'alt',
-      link: '/',
+      link: 'https://github.com/mmc-space/ssg',
     },
   ],
   image: undefined,
@@ -84,7 +84,7 @@ export const HomeLayout: FC = () => {
           >
             {hero.actions.map((action, index) => (
               <div className="p-1" key={index}>
-                <Button theme={action.theme}>{action.text}</Button>
+                <Button type="link" href={action.link} theme={action.theme}>{action.text}</Button>
               </div>
             ))}
           </div>

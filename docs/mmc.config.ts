@@ -4,7 +4,7 @@ export default defineConfig({
   route: {
     exclude: ['foo'],
   },
-  title: '🐛 ssg!',
+  title: '🐛 @mmc-cloud/ssg',
   themeConfig: {
     nav: [
       {

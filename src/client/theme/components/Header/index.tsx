@@ -38,11 +38,9 @@ export const Header: FC<HeaderProps> = (props) => {
             </div>
             <nav className="flex items-center">
               {nav.map(item => (
-                'link' in item
-                  ? <a className="flex items-center p-3 text-sm font-medium" key={item.text} href={item.link}>
+                <a className="flex items-center p-3 text-sm font-medium" key={item.text} href={item.link}>
                   {item.text}
                 </a>
-                  : null
               ))}
             </nav>
             <div className="theme">

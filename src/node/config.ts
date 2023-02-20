@@ -111,9 +111,7 @@ export namespace DefaultTheme {
   }
   // nav -----------------------------------------------------------------------
 
-  export type NavItem = NavItemWithLink | NavItemWithChildren
-
-  export interface NavItemWithLink {
+  export interface NavItem {
     text: string
     link: string
 
@@ -124,14 +122,9 @@ export namespace DefaultTheme {
     activeMatch?: string
   }
 
-  export interface NavItemChildren {
-    text?: string
-    items: NavItemWithLink[]
-  }
-
   export interface NavItemWithChildren {
     text?: string
-    items: NavItemWithLink[]
+    items: NavItem[]
   }
 
   // image -----------------------------------------------------------------------
