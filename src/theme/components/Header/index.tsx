@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import classNames from 'classnames'
 
-import type { DefaultTheme } from '@node'
+import type { DefaultTheme } from '../../../shared/types'
 import { Search } from '../Search'
 import { ThemeSwitch } from '../ThemeSwitch'
 

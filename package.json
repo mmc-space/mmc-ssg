@@ -21,8 +21,8 @@
     "registry": "https://registry.npmjs.org/"
   },
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/node/index.js",
+  "types": "dist/node/index.d.ts",
   "scripts": {
     "preinstall": "npx -y only-allow pnpm",
     "fix": "eslint --fix --ext .ts,.tsx src/**/* --no-ignore",
@@ -36,18 +36,23 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "types": "./dist/node/index.d.ts",
+      "import": "./dist/node/index.js"
     },
-    "./dist/*": "./dist/*"
+    "./dist/*": "./dist/*",
+    "./client": {
+      "type": "./dist/client/index.d.ts",
+      "default": "./dist/client/index.js"
+    }
   },
   "files": [
     "bin",
     "dist",
-    "src/client"
+    "src/shared/types"
   ],
   "devDependencies": {
     "@mmc-cloud/eslint-config-ts": "^1.0.1",
+    "@rollup/plugin-alias": "^4.0.3",
     "@rollup/plugin-json": "^6.0.0",
     "@types/fs-extra": "^11.0.1",
     "@types/hast": "^2.3.4",

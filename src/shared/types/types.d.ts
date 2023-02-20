@@ -7,7 +7,7 @@ declare module 'virtual:routes' {
 }
 
 declare module 'virtual:siteData' {
-  import type { SiteData, DefaultTheme } from './node'
+  import type { SiteData, DefaultTheme } from '@shared'
 
   export const siteData: SiteData<DefaultTheme.Config>
 }

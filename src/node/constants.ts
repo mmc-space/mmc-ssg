@@ -3,9 +3,9 @@ import { fileURLToPath } from 'url'
 
 export const ROOT_PATH = join(fileURLToPath(import.meta.url), '../..')
 
-export const CLIENT_PATH = join(ROOT_PATH, 'src', 'client')
+export const CLIENT_PATH = join(ROOT_PATH, 'src/client')
 
-export const NODE_PATH = join(ROOT_PATH, 'src', 'node')
+export const SHARED_PATH = join(ROOT_PATH, 'src/shared')
 
 export const APP_PATH = join(CLIENT_PATH, 'app')
 

@@ -2,7 +2,7 @@ import type { FC } from 'react'
 import classNames from 'classnames'
 import { usePageData } from '@client'
 
-import { SideBar } from './components/Sidebar'
+import { SideBar } from '../../components/Sidebar'
 
 import styles from './index.module.less'
 

@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { useSidebarData } from '@client'
 
-import type { DefaultTheme } from '@node'
+import type { DefaultTheme } from '@shared/types'
 import type { FC } from 'react'
 
 import classNames from 'classnames'
+import { useSidebarData } from '../../logic/useSidebarData'
 import styles from './index.module.less'
 
 export const SideBar: FC = () => {

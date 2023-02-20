@@ -7,6 +7,7 @@ importers:
       '@mdx-js/react': ^2.2.1
       '@mdx-js/rollup': ^2.2.1
       '@mmc-cloud/eslint-config-ts': ^1.0.1
+      '@rollup/plugin-alias': ^4.0.3
       '@rollup/plugin-json': ^6.0.0
       '@svgr/core': ^6.5.1
       '@types/fs-extra': ^11.0.1
@@ -25,6 +26,7 @@ importers:
       hast: ^1.0.0
       hast-util-from-html: ^1.0.1
       less: ^4.1.3
+      plugin-alias: link:@types/@rollup/plugin-alias
       react: ^18.2.0
       react-dom: ^18.2.0
       react-router-dom: ^6.6.2
@@ -69,6 +71,7 @@ importers:
       vite: 4.0.4_dprl76twtlijnqpm3fdjsbkzqm
     devDependencies:
       '@mmc-cloud/eslint-config-ts': 1.0.1_iukboom6ndih5an6iafl45j2fe
+      '@rollup/plugin-alias': 4.0.3_rollup@3.10.0
       '@rollup/plugin-json': 6.0.0_rollup@3.10.0
       '@types/fs-extra': 11.0.1
       '@types/hast': 2.3.4
@@ -78,6 +81,7 @@ importers:
       cac: 6.7.14
       eslint: 8.31.0
       fast-glob: 3.2.12
+      plugin-alias: link:@types/@rollup/plugin-alias
       rollup: 3.10.0
       rollup-plugin-dts: 5.1.1_eymahajmafh3u7vrzmo7ylp2pa
       rollup-plugin-esbuild: 5.0.0_7ouelsdmhd6tfw5jyesslnct24
@@ -923,6 +927,19 @@ packages:
     resolution: {integrity: sha512-XiY0IsyHR+DXYS5vBxpoBe/8veTeoRpMHP+vDosLZxL5bnpetzI0igkxkLZS235ldLzyfkxF+2divEwWHP3vMQ==}
     engines: {node: '>=14'}
     dev: false
+
+  /@rollup/plugin-alias/4.0.3_rollup@3.10.0:
+    resolution: {integrity: sha512-ZuDWE1q4PQDhvm/zc5Prun8sBpLJy41DMptYrS6MhAy9s9kL/doN1613BWfEchGVfKxzliJ3BjbOPizXX38DbQ==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      rollup: 3.10.0
+      slash: 4.0.0
+    dev: true
 
   /@rollup/plugin-json/6.0.0_rollup@3.10.0:
     resolution: {integrity: sha512-i/4C5Jrdr1XUarRhVu27EEwjt4GObltD7c+MkCIpO2QIbojw8MUs+CCTqOphQi3Qtg1FLmYt+l+6YeoIf51J7w==}
@@ -4529,6 +4546,11 @@ packages:
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
+    dev: true
+
+  /slash/4.0.0:
+    resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
+    engines: {node: '>=12'}
     dev: true
 
   /source-map-js/1.0.2:

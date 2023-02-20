@@ -2,7 +2,6 @@ import { createServer } from 'vite'
 import { generatePlugins } from './plugin'
 import { resolveConfig } from './config'
 import type { CLIDevOptions } from './cli'
-import { CLIENT_PATH, NODE_PATH } from './constants'
 
 export const createDevServer = async (root: string, cliOptions?: CLIDevOptions) => {
   const config = await resolveConfig(
@@ -14,12 +13,7 @@ export const createDevServer = async (root: string, cliOptions?: CLIDevOptions) 
 
   return createServer({
     root,
-    resolve: {
-      alias: {
-        '@client': `${CLIENT_PATH}`,
-        '@node': `${NODE_PATH}`,
-      },
-    },
+    base: '/',
     plugins: await generatePlugins(config),
   })
 }

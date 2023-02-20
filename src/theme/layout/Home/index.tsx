@@ -2,7 +2,7 @@ import type { FC } from 'react'
 import classNames from 'classnames'
 import { useFrontmatter } from '@client'
 
-import type { Feature, Hero } from '@client'
+import type { Feature, Hero } from '@shared/types'
 import { Button } from '../../components/Button'
 
 import styles from './index.module.less'

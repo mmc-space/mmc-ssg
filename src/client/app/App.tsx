@@ -2,7 +2,7 @@ import type { FC } from 'react'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { routes } from 'virtual:routes'
-import { Layout } from '../theme'
+import { Layout } from '../../theme'
 import { getPageData, usePageData } from './hooks'
 
 const App: FC = () => {

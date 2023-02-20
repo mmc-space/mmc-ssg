@@ -1,4 +1,4 @@
-import type { SiteConfig } from '@node'
+import type { SiteConfig } from '@shared/types'
 import type { PluginOption } from 'vite'
 
 import UnoCSS from 'unocss/vite'

@@ -7,10 +7,10 @@ import remarkDirective from 'remark-directive'
 import shiki from 'shiki'
 
 import type { Plugin } from 'vite'
+import type { SiteConfig } from '@shared/types'
 import { rehypePluginShiki } from '../markdown/plugin/shiki'
 import { rehypePluginPreWrapper } from '../markdown/plugin/preWrapper'
 import { rehypePluginLineNumbers } from '../markdown/plugin/lineNumbers'
-import type { SiteConfig } from '../config'
 
 export const pluginMDX = async (config: SiteConfig): Promise<Plugin> => {
   console.log(config)

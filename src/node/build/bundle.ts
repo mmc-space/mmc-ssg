@@ -1,8 +1,8 @@
 import type { InlineConfig } from 'vite'
 import { build } from 'vite'
 import type { RollupOutput } from 'rollup'
-import type { SiteConfig } from '@node'
-import { CLIENT_ENTRY_PATH, CLIENT_PATH, NODE_PATH, SERVER_ENTRY_PATH } from '../constants'
+import type { SiteConfig } from '@shared/types'
+import { CLIENT_ENTRY_PATH, CLIENT_PATH, SERVER_ENTRY_PATH } from '../constants'
 import { generatePlugins } from '../plugin'
 
 const resolveViteConfig = async (
@@ -16,7 +16,6 @@ const resolveViteConfig = async (
     resolve: {
       alias: {
         '@client': `${CLIENT_PATH}`,
-        '@node': `${NODE_PATH}`,
       },
     },
     plugins: await generatePlugins(options, true),
