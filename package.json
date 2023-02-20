@@ -1,6 +1,7 @@
 {
   "name": "@mmc-cloud/mmc-ssg",
-  "version": "1.0.1",
+  "version": "1.0.2",
+  "packageManager": "pnpm@7.9.2",
   "keywords": [
     "vite",
     "ssg",
@@ -42,7 +43,8 @@
   },
   "files": [
     "bin",
-    "dist"
+    "dist",
+    "src/client"
   ],
   "devDependencies": {
     "@mmc-cloud/eslint-config-ts": "^1.0.1",
