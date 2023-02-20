@@ -11,7 +11,7 @@ import styles from './index.module.less'
 export const Layout = () => {
   const { data } = usePageData()
   const { siteData } = data ?? {}
-  const nav = Object.values(siteData?.themeConfig.nav || [])
+  const nav = Object.values(siteData?.themeConfig?.nav || [])
 
   const { pageType = '404' } = data ?? {}
 

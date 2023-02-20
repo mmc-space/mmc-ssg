@@ -330,12 +330,12 @@ export const resolveConfig = async (
   mode: 'development' | 'production',
   customizeConfig?: string,
 ) => {
-  const userConfig = (await resolveUserConfig(
+  const userConfig = ((await resolveUserConfig(
     root,
     command,
     mode,
     customizeConfig,
-  )).config as UserConfig<DefaultTheme.Config>
+  ))?.config ?? {}) as UserConfig<DefaultTheme.Config>
 
   const userThemeDir = resolve(root, 'theme')
   const themeDir = fs.pathExistsSync(userThemeDir)

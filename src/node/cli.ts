@@ -27,7 +27,7 @@ cli.option(
 cli
   .command('[root]', 'start dev server') // default command
   .alias('dev')
-  .action(async (root: string, options: CLIDevOptions) => {
+  .action(async (root: string, options?: CLIDevOptions) => {
     try {
       const server = await createDevServer(root, options)
       await server.listen()
