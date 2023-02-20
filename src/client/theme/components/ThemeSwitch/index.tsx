@@ -6,11 +6,11 @@ import MoonSvg from '../../assets/moon.svg'
 import styles from './index.module.less'
 
 export const useTheme = () => {
-  const classList = document.documentElement.classList
+  const classList = document?.documentElement?.classList
   let isDark = false
 
   const setClass = (dark?: boolean) =>
-    classList[dark ? 'add' : 'remove']('dark')
+    classList?.[dark ? 'add' : 'remove']('dark')
 
   const toggle = () => setClass((isDark = !isDark))
 

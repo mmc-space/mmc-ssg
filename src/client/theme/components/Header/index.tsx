@@ -16,7 +16,7 @@ export const Header: FC<HeaderProps> = (props) => {
   const { title, nav = [] } = props
 
   return (
-    <header className="z-2 fixed top-0 left-0 w-full">
+    <header className="z-3 fixed top-0 left-0 w-full">
       <div className={classNames('px-8', styles.fill)}>
         <div
           className={classNames(

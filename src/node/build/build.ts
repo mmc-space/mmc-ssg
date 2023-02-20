@@ -4,9 +4,9 @@ import { resolveConfig } from '../config'
 import { bundle } from './bundle'
 import { renderPage } from './render'
 
-export const build = async (root: string = process.cwd()) => {
+export const build = async (root: string) => {
   const siteConfig = await resolveConfig(root, 'build', 'production')
-  const { clientResult } = await bundle(root)
+  const { clientResult } = await bundle(root, siteConfig)
 
   const entryPath = join(root, 'temp', 'ssr.mjs')
   const { render } = await import(entryPath)
@@ -33,5 +33,3 @@ export const build = async (root: string = process.cwd()) => {
     console.log(error)
   }
 }
-
-build()

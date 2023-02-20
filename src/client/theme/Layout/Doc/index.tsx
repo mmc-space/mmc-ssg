@@ -17,7 +17,7 @@ export const DocLayout: FC = () => {
           {data?.element}
         </div>
         <div className='pl-8 w-64'>
-          目录
+          {/* 目录 */}
         </div>
       </section>
     </div>

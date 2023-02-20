@@ -2,6 +2,7 @@ import type { FC } from 'react'
 import { useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
+import { setup } from '../theme/logic/setup'
 import { PageDataContext, getPageData } from './hooks'
 import App from './App'
 
@@ -30,4 +31,7 @@ export const render = async () => {
   )
 }
 
-render()
+render().then(() => {
+  console.log('client is render')
+  setup()
+})

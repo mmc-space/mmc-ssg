@@ -4,8 +4,6 @@ import App from './App'
 
 // entry for ssr
 export const render = (path: string) => {
-  console.log('path', path)
-
   return renderToString(
     <StaticRouter location={path}>
       <App />

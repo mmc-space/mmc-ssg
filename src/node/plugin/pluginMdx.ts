@@ -4,8 +4,12 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import remarkPluginGFM from 'remark-gfm'
 import remarkGemoji from 'remark-gemoji'
 import remarkDirective from 'remark-directive'
+import shiki from 'shiki'
 
 import type { Plugin } from 'vite'
+import { rehypePluginShiki } from '../markdown/plugin/shiki'
+import { rehypePluginPreWrapper } from '../markdown/plugin/preWrapper'
+import { rehypePluginLineNumbers } from '../markdown/plugin/lineNumbers'
 import type { SiteConfig } from '../config'
 
 export const pluginMDX = async (config: SiteConfig): Promise<Plugin> => {
@@ -20,6 +24,17 @@ export const pluginMDX = async (config: SiteConfig): Promise<Plugin> => {
       remarkDirective,
       remarkFrontmatter,
       [remarkMdxFrontmatter, { name: 'frontmatter' }],
+    ],
+    rehypePlugins: [
+      // heighlight
+      [
+        rehypePluginShiki,
+        {
+          highlighter: await shiki.getHighlighter({ theme: 'dracula' }),
+        },
+      ],
+      rehypePluginPreWrapper,
+      rehypePluginLineNumbers,
     ],
   })
 }

@@ -13,12 +13,12 @@ const DEFAULT_HERO: Hero = {
   tagline: 'mmc ssg',
   actions: [
     {
-      text: 'Get Started',
+      text: '快速入门',
       theme: 'brand',
       link: '/guide/getting-started',
     },
     {
-      text: 'View on GitHub',
+      text: 'GitHub地址',
       theme: 'alt',
       link: 'https://github.com/mmc-space/ssg',
     },
@@ -71,13 +71,12 @@ export const HomeLayout: FC = () => {
             <span className={styles.clip}>mmc ssg</span>
           </h1>
           <p className="text-6xl font-bold">
-            Vite & React Powered Static Site Generator
+            基于 Vite & MDX 语法的静态站点生成器
           </p>
           <p
             className={classNames('pt-3 font-medium text-2xl', styles.tagline)}
           >
-            Simple, powerful, and performant. Meet the modern SSG framework
-            you've always wanted.
+            简单、强大、高效。满足您一直想要的现代SSG框架
           </p>
           <div
             className={classNames('pt-8 flex justify-center', styles.actions)}

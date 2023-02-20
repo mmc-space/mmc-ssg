@@ -1,12 +1,10 @@
 import { createServer } from 'vite'
-import pluginReact from '@vitejs/plugin-react'
-import UnoCSS from 'unocss/vite'
 import { generatePlugins } from './plugin'
 import { resolveConfig } from './config'
-import type { CLIOptions } from './cli'
+import type { CLIDevOptions } from './cli'
 import { CLIENT_PATH, NODE_PATH } from './constants'
 
-export const createDevServer = async (root: string, cliOptions: CLIOptions) => {
+export const createDevServer = async (root: string, cliOptions: CLIDevOptions) => {
   const config = await resolveConfig(
     root,
     'serve',
@@ -22,10 +20,6 @@ export const createDevServer = async (root: string, cliOptions: CLIOptions) => {
         '@node': `${NODE_PATH}`,
       },
     },
-    plugins: [
-      ...await generatePlugins(config),
-      UnoCSS(),
-      pluginReact(),
-    ],
+    plugins: await generatePlugins(config),
   })
 }

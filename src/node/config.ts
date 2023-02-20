@@ -274,6 +274,9 @@ export interface RouteOptions {
 }
 
 export interface UserConfig<ThemeConfig = DefaultTheme.Config> {
+  /** base path */
+  base?: string
+
   title?: string
 
   themeConfig?: ThemeConfig
@@ -282,12 +285,14 @@ export interface UserConfig<ThemeConfig = DefaultTheme.Config> {
   route?: RouteOptions
 }
 
-export interface SiteConfig {
+export interface SiteConfig extends Omit<UserConfig, 'themeConfig'> {
   pages: { path: string; filePath: string }[]
   root: string
   command: 'serve' | 'build'
 
   themeDir?: string
+
+  outDir?: string
 }
 
 export function defineConfig<ThemeConfig = DefaultTheme.Config>(config: UserConfig<ThemeConfig>) {

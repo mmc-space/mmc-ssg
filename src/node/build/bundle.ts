@@ -1,18 +1,25 @@
 import type { InlineConfig } from 'vite'
 import { build } from 'vite'
 import type { RollupOutput } from 'rollup'
-import pluginReact from '@vitejs/plugin-react'
-import { CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from '../constants'
-import { pluginHtmlTemplate, pluginRoutes } from '../plugin'
+import type { SiteConfig } from '@node'
+import { CLIENT_ENTRY_PATH, CLIENT_PATH, NODE_PATH, SERVER_ENTRY_PATH } from '../constants'
+import { generatePlugins } from '../plugin'
 
 const resolveViteConfig = async (
   ssr: boolean,
   root: string,
+  options: SiteConfig,
 ): Promise<InlineConfig> => {
   return {
     mode: 'production',
     root,
-    plugins: [pluginHtmlTemplate(), pluginRoutes(), pluginReact()],
+    resolve: {
+      alias: {
+        '@client': `${CLIENT_PATH}`,
+        '@node': `${NODE_PATH}`,
+      },
+    },
+    plugins: await generatePlugins(options, true),
     build: {
       ssr,
       ssrManifest: !ssr,
@@ -30,10 +37,10 @@ const resolveViteConfig = async (
 }
 
 // bundles the app for both client and server.
-export const bundle = async (root: string = process.cwd()) => {
+export const bundle = async (root: string, options: SiteConfig) => {
   const [clientResult, serverResult] = await (Promise.all([
-    build(await resolveViteConfig(false, root)),
-    build(await resolveViteConfig(true, root)),
+    build(await resolveViteConfig(false, root, options)),
+    build(await resolveViteConfig(true, root, options)),
   ]) as Promise<[RollupOutput, RollupOutput]>)
 
   return {
